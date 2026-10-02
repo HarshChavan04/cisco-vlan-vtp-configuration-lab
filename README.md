@@ -86,8 +86,23 @@ interface FastEthernet0/3
  switchport access vlan 40
 ```
 
-### Key Verification Commands
-* `show vtp status` - Check current VTP mode, domain name, and revision number.
-* `show vlan brief` - Verify which VLANs exist locally in the switch's database.
-* `show interface [interface-id] switchport` - Inspect operational trunking status and verify if `Negotiation of Trunking` is turned off.
+---
 
+## Verification & Results (Switch1 / SW2 Focus)
+
+The configuration of **Switch1 (SW2)** has been validated using the following CLI console captures to confirm successful deployment:
+
+### VTP Status Check
+`show vtp status` validates that Switch1 is successfully running in **Transparent** operating mode under the **CCNA** VTP domain.
+
+![VTP Status Verification](verify2.png)
+
+### VLAN Database Check
+`show vlan brief` confirms the presence of local database assignments including the manually added **VLAN 40** alongside inherited interface settings.
+
+![VLAN Database Verification](verify1.png)
+
+### Interface Capabilities & DTP Mitigation Status
+`show interface FastEthernet0/2 switchport` verifies that static operational behaviors are enforced and trunk/dynamic negotiation flags (`Negotiation of Trunking: Off`) are successfully disabled.
+
+![Interface Switchport Verification](verify3.png)
